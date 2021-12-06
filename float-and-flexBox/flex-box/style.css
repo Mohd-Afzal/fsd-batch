@@ -1,0 +1,54 @@
+#flex-container {
+	width: 100%;
+	height: 500px;
+	background-color: lightslategrey;
+
+	display: flex;
+}
+
+.flex-elements {
+	width: 110px;
+	height: 110px;
+	background-color: firebrick;
+	margin: 5px;
+
+	flex-basis: 112px;
+}
+
+.flex-elements p {
+	color: white;
+	text-align: center;
+    line-height: 24px;
+    font-size: 32px;
+}
+
+/* Picking Flex Elements One by One by its ID  */
+
+#flex-element-one {
+	flex-grow: 3;
+}
+
+/*#flex-element-two {
+	order: 6;
+}
+
+#flex-element-three {
+	order: 5;
+}*/
+
+#flex-element-four {
+	flex-shrink: 3;
+}
+
+#flex-element-five {
+	flex-grow: 10;
+}
+
+/*#flex-element-six {
+	order: 2;
+}
+
+#flex-element-seven {
+	order: 1;
+}
+*/
