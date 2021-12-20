@@ -126,29 +126,29 @@ console.log("OOPS file!");
 
 // 3. Using the Constructor Method/Function
 
-function Human(hairColor, gender, name) {
+// function Human(hairColor, gender, name) {
     
-    // Define the properties
-    this.hairColor = hairColor;
-    this.gender = gender; 
-    this.name = name;
+//     // Define the properties
+//     this.hairColor = hairColor;
+//     this.gender = gender; 
+//     this.name = name;
         
-    // Define methods or functions
+//     // Define methods or functions
 
-    // this.eat = function(a, b) {
-    //     console.log(this.hairColor);
-    //     let sum = a + b;
-    //     console.log("Sum is: ", sum)
-    //     console.log("I eat food!");
-    // }
+//     // this.eat = function(a, b) {
+//     //     console.log(this.hairColor);
+//     //     let sum = a + b;
+//     //     console.log("Sum is: ", sum)
+//     //     console.log("I eat food!");
+//     // }
 
-    // Not defined in the prototype
-    this.getCurrentReference = function () {
-        console.log(this);
-    }
+//     // Not defined in the prototype
+//     this.getCurrentReference = function () {
+//         console.log(this);
+//     }
 
-    //we never return -> coz this is a Constructor Function
-}
+//     //we never return -> coz this is a Constructor Function
+// }
 
 
 // var afzal = new Human("black", "male", "Afzal");
@@ -169,48 +169,90 @@ function Human(hairColor, gender, name) {
 /* -------- Prototypes -------- */
 
 // Moving the eat function to the prototype of Human
-Human.prototype.eat = function(a, b) {
-    console.log(this.hairColor);
-    let sum = a + b;
-    console.log("Sum is: ", sum)
-    console.log("I eat food!");
-}
+// Human.prototype.eat = function(a, b) {
+//     console.log(this.hairColor);
+//     let sum = a + b;
+//     console.log("Sum is: ", sum)
+//     console.log("I eat food!");
+// }
 
-var afzal = new Human("black", "male", "Afzal");
+// var afzal = new Human("black", "male", "Afzal");
 // afzal.eat(30, 50); // Calling the eat function using the object which is defined in the prototype actually
 
 
-// Defining properties in the protoype
-Human.prototype.numberOfLegs = 2;
-Human.prototype.numberOfHands = 2;
+// Discuss about the methods
+// const viaConstructor = Human.prototype;
+// const viaObject = Object.getPrototypeOf(afzal); //afzal.__proto__; -> Dunder proto - Discouraged the use
+
+// console.log(viaConstructor === viaObject);
+
+// var isProto = Human.prototype.isPrototypeOf(afzal);
+// console.log(isProto);
+
+
+// // To check whether a given property belong to the object or its prototype
+// var isProperty = afzal.hasOwnProperty("eat");
+// console.log(isProperty);
+
+// // const isProperty = afzal.hasOwnProperty("numberOfLegs");
+// isProperty = afzal.hasOwnProperty("gender");
+// console.log(isProperty);
+
+
+// // Defining properties in the protoype
+// Human.prototype.numberOfLegs = 2;
+// Human.prototype.numberOfHands = 2;
+
+// isProperty = afzal.hasOwnProperty("numberOfHands");
+// console.log(isProperty);
+
+// afzal.numberOfHands = 5; // Your created/added 'numberOfHands' in afzal
+
+// isProperty = afzal.hasOwnProperty("numberOfHands");
+// console.log(isProperty);
 
 
 
 // Creating an EMpty Object
-const obj1 = {};
-const obj2 = new Object();
+// const obj1 = {};
+// const obj2 = new Object();
 
 
-// Discuss about the methods
+// afzal.a = "";
+// Human.prototype.a = 50; 
+// Object.prototype.a = 100;
 
-const objProto = Object.prototype;
-const humanProto = Human.prototype
 
-if (humanProto === objProto) {
-    console.log("TRUE");
-} else {
-    console.log("False");
+
+
+// Classes
+class Human {
+    // constructor() {}
+    constructor(hairColor, gender, name) {
+        this.hairColor = hairColor;
+        this.gender = gender; 
+        this.name = name;
+    }
+
+    // Defined in the Human.proto
+    eat() {
+        console.log("I eat food!");
+    }
+
 }
 
-// Alternate to writing the above code
-// const isTrue = Object.prototype.isPrototypeOf(Human.prototype);
-// console.log(isTrue);
+var afzal = new Human("black", "male", "Afzal");
+
+
+
 
 /* 
     1. Hirearchy of the objects defined in JavaScript
     2. object VS Object
     3. Classes
-    4. Inheritance
+    4. Hoisting in JS
+    5. Inheritance
+        
 */
 
 
