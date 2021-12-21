@@ -43,6 +43,7 @@ console.log("OOPS file!");
 //     }
 // };
 
+
 // console.log(typeof human);
 // console.log(human.hairColor);
 // console.log(human.gender);
@@ -92,9 +93,12 @@ console.log("OOPS file!");
 
 
 
-// this keyword --> is an object that referes to the object in the current context
-// We are in the global context
+/* 
+    this keyword --> is an object that referes to the object in the current context
+    
+    We are in the global context
 
+*/
 
 // function demo(a, b) {
 //     console.log(this);
@@ -126,6 +130,8 @@ console.log("OOPS file!");
 
 // 3. Using the Constructor Method/Function
 
+// var afzal = new Human("black", "male", "Afzal"); -- Wrote it while covering Hoisting in JavaScript 
+
 // function Human(hairColor, gender, name) {
     
 //     // Define the properties
@@ -146,7 +152,6 @@ console.log("OOPS file!");
 //     this.getCurrentReference = function () {
 //         console.log(this);
 //     }
-
 //     //we never return -> coz this is a Constructor Function
 // }
 
@@ -226,23 +231,102 @@ console.log("OOPS file!");
 
 
 // Classes
-class Human {
-    // constructor() {}
-    constructor(hairColor, gender, name) {
-        this.hairColor = hairColor;
-        this.gender = gender; 
-        this.name = name;
+// class Human {
+//     // constructor() {}
+//     constructor(hairColor, name) {
+//         this.hairColor = hairColor;
+//         // this.gender = gender; 
+//         this.name = name;
+//     }
+
+//     // Defined in the Human.proto
+//     eat() {
+//         console.log("I eat food!");
+//     }
+
+// }
+
+// var afzal = new Human("black", "male", "Afzal");
+
+
+
+
+/* 
+    
+            Hoisting in JavaScript 
+
+    Moving the function declaration to the top of the script
+
+*/
+
+// Works because of Hoisting
+// print("Hello World!");
+
+// function print(sentence) {
+//     console.log(sentence);
+// }
+
+// print("Hello World!");
+
+
+
+
+
+/* 
+        Inheritance in JavaScript
+
+    Inheritance is the concept of inheriting the properties, functions/methods/behaviours from the Parent(s)
+
+*/
+
+class Vehicle {
+    constructor(type, isAutomatic) {
+        this.type = type;
+        this.isAutomatic = isAutomatic;
     }
 
-    // Defined in the Human.proto
-    eat() {
-        console.log("I eat food!");
+    transport() {
+        console.log("I am transporting from point A to point B!");
+    }
+
+    displayDetails() {
+        console.log("My type: " , this.type);
+        console.log("Am I automatic?: " , this.isAutomatic);
+    }
+}
+
+// Inheriting the properties and methods of Vehicle class
+class Car extends Vehicle {
+
+    constructor(brandName, modelName, capacity) {
+        // Must call the constructor of the immediate parent
+        super("LMV", "YES"); // to invoke the constructor for the parent
+        this.brandName = brandName;
+        this.modelName = modelName;
+        this.capacity = capacity;
+    }
+
+    // displayCar() {
+    //     console.log("Brand Name: " , this.brandName);
+    //     console.log("Model Name: " , this.modelName);
+    //     console.log("Seating Capacity: " , this.capacity);
+    // }
+
+    displayDetails() {
+        super.displayDetails();
+        console.log("Brand Name: " , this.brandName);
+        console.log("Model Name: " , this.modelName);
+        console.log("Seating Capacity: " , this.capacity);
     }
 
 }
 
-var afzal = new Human("black", "male", "Afzal");
 
+// Creating Object for Car
+const baleno = new Car("Nexa", "Baleno", 5);
+
+baleno.transport();
+baleno.displayDetails();
 
 
 
@@ -254,6 +338,3 @@ var afzal = new Human("black", "male", "Afzal");
     5. Inheritance
         
 */
-
-
-/*  End  */
