@@ -2,11 +2,14 @@ import Header from "./components/Header";
 
 function App() {
   return (
+    // JSX 
+
     <div className="App">
       {/* <h1> Hello Welcome to React </h1> */}
-      <Header title = "first header" id = "1" />
-      <Header title = "second header" id = "2"/>
-      <Header />
+      <Header name = "Swammy" age = {30} />
+      {/* <Header name = "Aditya" age = "30"/>
+      <Header name = "Afzal" age = "25"/> */}
+      {/* <Header /> */}
     </div>
   );
 }
