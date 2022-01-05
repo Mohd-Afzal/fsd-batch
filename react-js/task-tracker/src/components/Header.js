@@ -10,8 +10,6 @@ function Header (props) {
                 {/* <h1 className="header"> This is a Basic Header Component! </h1> */}
                 <h1 className="page-header"> Hey, {props.name}! I am {props.age} years old. </h1>
             </header>
-
-            <button style = {{backgroundColor: 'red', color: 'white'}} > Click Me! </button>
         </>
         
     );
@@ -23,12 +21,12 @@ Header.defaultProps = {
 }
 
 Header.propTypes = {
-    name: PropTypes.string,
-    age: PropTypes.number
+    name: PropTypes.string.isRequired,
+    age: PropTypes.number.isRequired
 }
 
-// import { Component } from "react";
 
+// import { Component } from "react";
 
 // 2. Class Based Component
 // class Header extends Component {
