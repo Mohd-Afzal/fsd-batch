@@ -62,7 +62,7 @@ function add(a, b, callBackFunction) {
     Higher Order Array Methods
 */
 
-const ages = [33, 12, 20, 16, 5, 54, 21, 44, 61, 13, 15, 45, 25, 64, 32]
+const ages = [33, 12, 20, 16, 5, 54, 21, 44, 61, 62, 69, 13, 15, 45, 25, 64, 32];
 
 // for (let i = 0; i < ages.length; i++) {
 //     console.log(ages[i]);
@@ -118,5 +118,100 @@ const ages = [33, 12, 20, 16, 5, 54, 21, 44, 61, 13, 15, 45, 25, 64, 32]
 
 // 5. slice function
 
+// console.log(ages.slice(4));
 
-console.log(ages.slice(4));
+// const arr = [40, 25, 1, 0, 10, 100]; // 0 1 10 25 40 100 
+// console.log("Before Sorting: ", arr);
+// arr.sort();
+// console.log("After Sorting: ", arr);
+
+// const words = ["abc", "abb", "ab", "aa"];
+// words.sort();
+// console.log(words);
+
+// const numbers = [9, 8, 7, 6, 5, 4, 3, 2, 1]; // Dont confuse with this kind of array
+
+
+
+
+/* Compare function to modify the default nature of ordering elements in sort() */
+
+// function compare(a, b) {
+//     return a-b;
+// }
+// arr.sort(compare); // sorted on the basis of numbers itself
+// arr.sort((a, b) =>  a - b );
+
+
+// A small web page to display sorting
+// const textArea = document.getElementById("array");
+// textArea.innerHTML = arr;
+
+// function alphabaticSort() {
+//     console.log("Callback Called");
+//     arr.sort();
+//     textArea.innerHTML = arr;
+// }
+
+// function numericalSort() {
+//     console.log('Numerical Callback called!');
+//     arr.sort((a, b) => a - b);
+//     textArea.innerHTML = arr;
+// }
+
+// 8. find()
+// let num = ages.find((element) => {
+//     return  element > 54;
+// });
+// console.log(num);
+
+
+// 9. reduce()
+
+// let sum = 0;
+// for (let i = 0; i < ages.length; i++) {
+//     sum += ages[i];
+// }
+// console.log(sum);
+
+// function callBack(sum, element) {
+//     return sum + element;
+// }
+// const ans = ages.reduce(callBack);
+// console.log(ans);
+
+
+
+/* -------- Operate Array Methods on Object -------- */ 
+
+// companies.forEach(company => console.log(company));
+
+// const retailCompanies = companies.filter(company => company.category === 'Retail');
+// retailCompanies.forEach(company => console.log(company));
+
+
+
+// sort the companies on the basis of its start date
+
+/*  FIGURE OUT THIS   */
+
+
+
+/*  Async Function - 10 mins */
+
+
+function functionOne() {
+    let d = new Date();
+    document.getElementById("text").innerHTML = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+}
+
+function functionTwo() {
+    document.getElementById("function-two").innerHTML = "Called Function Two!";
+}
+
+const obj = setInterval(functionOne, 1000);
+
+functionTwo();
+
+
+// clearInterval(obj);
