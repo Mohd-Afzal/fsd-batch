@@ -46,8 +46,8 @@ function Tasks () {
                 // Learn the Higher Order Array Methods
                 tasks.map((task) => (
                     <div>
-                        <h3> {task.text} </h3>
-                        <h4> {task.day} </h4>
+                        <li key={task.id}> {task.text} </li>
+                        {/* <h4> {task.day} </h4> */}
                     </div>
                 ))
                 

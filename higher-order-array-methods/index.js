@@ -200,18 +200,104 @@ const ages = [33, 12, 20, 16, 5, 54, 21, 44, 61, 62, 69, 13, 15, 45, 25, 64, 32]
 /*  Async Function - 10 mins */
 
 
-function functionOne() {
-    let d = new Date();
-    document.getElementById("text").innerHTML = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
-}
+// function functionOne() {
+//     let d = new Date();
+//     document.getElementById("text").innerHTML = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+// }
 
-function functionTwo() {
-    document.getElementById("function-two").innerHTML = "Called Function Two!";
-}
+// function functionTwo() {
+//     document.getElementById("function-two").innerHTML = "Called Function Two!";
+// }
 
-const obj = setInterval(functionOne, 1000);
+// const obj = setInterval(functionOne, 1000);
 
-functionTwo();
+// functionTwo();
 
 
 // clearInterval(obj);
+
+
+/* ---- Promises in JavaScript ------ */
+
+// Creating an object for Promise
+// var promise = new Promise((resolve, reject) => {
+//     //task
+//     let a = 10;
+//     let b = 20;
+
+//     if (a + b === 40) {
+//         // console.log("Success!");
+//         resolve("Success! - Making changes to see!");
+//     } else {
+//         // console.log("Unsucessful!")
+//         reject("Unsucessful!");
+//     }
+// });
+
+
+// promise.then((response) => {
+//     console.log(response);
+// }).catch((response) => {
+//     console.log(response);
+// });
+
+
+var session = true;
+
+// trying to figure out whether the session for a user is active or not
+// function isSessionActive(callBack, error) {
+//     if (session) {
+//         // the session is active
+//         callBack({
+//             responseMessage: "the session is active",
+//             responseCode: 200
+//         });
+//     } else {
+//         // the session is inactive
+//         error({
+//             responseMessage: "the session is inactive",
+//             responseCode: 404
+//         });
+//     }
+// }
+
+function isSessionActive() {
+
+    let promise = new Promise((resolve, reject) => {
+        if (session) {
+            // the session is active
+            resolve({
+                responseMessage: "the session is active",
+                responseCode: 200
+            });
+        } else {
+            // the session is inactive
+            reject({
+                responseMessage: "the session is inactive",
+                responseCode: 404
+            });
+        }
+    });
+
+    return promise;
+}
+
+// const checkSession = () => {
+//     isSessionActive((sucess) => {
+//         console.log(sucess);
+//     }, (error) => {
+//         console.log(error);
+//     });
+// }
+
+// const objSetTimeout = setTimeout(() => {
+//     session = true;
+// }, 0.5);
+
+// checkSession();
+
+
+const obj = isSessionActive().then((responseObj) => {console.log(responseObj);})
+obj.then((responseObj) => {
+    console.log(responseObj);
+})
