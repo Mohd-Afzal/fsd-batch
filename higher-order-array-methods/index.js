@@ -262,7 +262,6 @@ var session = true;
 // }
 
 function isSessionActive() {
-
     let promise = new Promise((resolve, reject) => {
         if (session) {
             // the session is active
@@ -297,7 +296,8 @@ function isSessionActive() {
 // checkSession();
 
 
-const obj = isSessionActive().then((responseObj) => {console.log(responseObj);})
-obj.then((responseObj) => {
+isSessionActive().then((responseObj) => {
     console.log(responseObj);
-})
+}).catch((errorObj) => {
+    console.log(errorObj)
+});

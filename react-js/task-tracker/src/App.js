@@ -1,5 +1,4 @@
-import Button from "./components/Button";
-import Tasks from "./components/Tasks";
+import MyApp from "./components/MyApp";
 
 function App() {
   return (
@@ -10,10 +9,12 @@ function App() {
       {/* <Header name = "Swammy" age = {30} /> */}
       {/* <Header name = "Aditya" age = "30"/> */ }
       {/* <Header /> */}
-      <div className="container">
+      {/* <div className="container">
         <Button text = "Click Me!"/>
         <Tasks />
-      </div>
+      </div> */}
+
+      <MyApp heading = "Type your text in the box below!"/>
     </div>
   );
 }

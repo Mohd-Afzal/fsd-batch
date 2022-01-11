@@ -110,3 +110,7 @@ footer {
   margin-top: 30px;
   text-align: center;
 }
+
+textarea {
+  margin: 2px;
+}
