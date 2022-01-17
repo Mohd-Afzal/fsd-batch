@@ -1,18 +1,16 @@
-// const buttonStyle = {
-//     backgroundColor: 'red', 
-//     color: 'white', 
-//     padding: '10px',
-//     border: 'dotted'
-// };
-
 
 // Props Decomposition
-function Button({text}) {
+function Button({click, text}) {
+    // console.log(clickAction);
+    function buttonClick() {
+        console.log("Hey! BUtton Component was clicked!")
+        //Define it in a much better way to cater to the business requirement
+        click();
+    }
+
     return (
         <>
-            {/* <button style = {{backgroundColor: backgroundColor, color: color}}> {text} </button> */}
-            <button className='btn'> {text} </button>
-            {/* <h3> I am a headline! </h3> */}
+            <button onClick={buttonClick} className='btn btn-success'> {text} </button>
         </>
     );
 }
