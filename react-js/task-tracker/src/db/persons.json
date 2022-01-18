@@ -1,0 +1,33 @@
+// npx json-server --watch <path of JSON> --port 8000 
+
+{
+    "persons": [
+        {
+            "id": 1,
+            "firstName": "Aman",
+            "age": 29,
+            "goal": "Commercial Pilot"
+        },
+    
+        {
+            "id": 2,
+            "firstName": "Eva Mariam",
+            "age": 24,
+            "goal": "Scientist"
+        },
+    
+        {
+            "id": 3,
+            "firstName": "Afzal",
+            "age": 29,
+            "goal": "Director of Innomatics"
+        },
+    
+        {
+            "id": 4,
+            "firstName": "Monica",
+            "age": 24,
+            "goal": "Software Developer - II"
+        }
+    ]
+}
