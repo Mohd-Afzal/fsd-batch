@@ -10,45 +10,36 @@ const containerLayout = {
 }
 
 function App() {
-  const [persons, setPersons] = useState(
-    [ 
-      {
-        id: 1,
-        firstName: "Aman",
-        age: 29,
-        goal: "Commercial Pilot"
-      },
-
-      {
-        id: 2,
-        firstName: "Eva Mariam",
-        age: 24,
-        goal: "Scientist"
-      },
-
-      {
-        id: 3,
-        firstName: "Afzal",
-        age: 29,
-        goal: "Director of Innomatics"
-      },
-
-      {
-        id: 4,
-        firstName: "Monica",
-        age: 24,
-        goal: "Software Developer - II"
-      }
-    ]
-  );
+  const [persons, setPersons] = useState(null);
   const [showData, setShowData] = useState(false);
   const [buttonText, setButtonText] = useState("Show Data");
-
   const [demoName, setDemoName] = useState("Aakanksha");
 
   useEffect(() => {
     console.log("Use Effect Hook's callback has been invoked!");
-  }, [demoName]);
+    // Fetch the data from a server - JSON Server
+
+    // returns a promise
+    setTimeout(() => {
+      const resource = "persons";
+      fetch(`http://localhost:8000/${resource}`)
+      .then((response) => {
+        console.log("Fist Promise: ", response);
+        if(!response.ok) {
+          throw Error(`Unable to reach the mentioned resource -${resource}`);
+        }
+        return response.json();
+      })
+      .then((response) => {
+        console.log("Second Promise", response);
+        setPersons(response);
+        setShowData(true);
+      }).catch((error) => {
+        console.log(error.message);
+      });
+    }, 4000);
+
+  }, []);
 
 
   function togglePersons() {
@@ -88,12 +79,21 @@ function App() {
     <div className="App">
       <h1 id = "heading"> Task Tracker Application </h1>
       <div style={containerLayout}>
-        <Button click = {togglePersons} text = {buttonText}/>
-        {renderPerson}
+        {/* <Button click = {togglePersons} text = {buttonText}/> */}
+      
+        {
+          !showData && <h1> Loading Persons Data .... </h1>
+        }
+        {
+          // renderPerson
+          showData && persons.map((person) => {
+            return <PersonDetail key = {person.id} id = {person.id} person = {person} deletePerson = {deletePerson}/>
+          })
+        }
       </div>
 
-      <h1> {demoName} </h1>
-      <button className="btn btn-danger" onClick={() => {setDemoName("John Doe")}}> Change Name </button>
+      {/* <h1> {demoName} </h1>
+      <button className="btn btn-danger" onClick={() => {setDemoName("John Doe")}}> Change Name </button> */}
     </div>
   );
 }
