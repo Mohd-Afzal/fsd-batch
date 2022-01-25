@@ -1,8 +1,12 @@
 import Button from "./components/Button";
 import PersonDetail from "./components/PersonDetail";
-import './App.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import useFetch from "./useFetch";
+import NavBar from "./components/NavBar";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import AddPerson from "./components/AddPerson";
+import ContactUs from "./components/ContactUs";
+import GoalDetails from "./components/GoalDetails";
 
 const containerLayout = {
   display: "flex",
@@ -13,7 +17,7 @@ function App() {
   const [showData, setShowData] = useState(false);
   const [buttonText, setButtonText] = useState("Show Data");
 
-  const {data: persons, triggerFetch} = useFetch('http://localhost:8000/persons');
+  const {data: persons, triggerFetch, setData, setTriggerFetch} = useFetch('http://localhost:8000/persons', showData, [showData]);
 
   // const fetchData = () => {
   //   console.log("Use Effect Hook's callback has been invoked!");
@@ -52,6 +56,7 @@ function App() {
   function togglePersons() {
     if (showData) {
       setShowData(false);
+      setTriggerFetch(false);
       setButtonText("Show Data")
     } else {
       setShowData(true);
@@ -86,12 +91,57 @@ function App() {
 
   return (
     <div className="App">
-      <h1 id = "heading"> Task Tracker Application </h1> 
-      <div style={containerLayout}> 
-        <Button click = {togglePersons} text = {buttonText}/>
-        {!triggerFetch && <h1> Loading Persons Data .... </h1>}
-        {renderPerson}
-      </div>
+
+      <Router>
+        <h1 id = "heading"> Task Tracker Application </h1> 
+        <NavBar/> 
+
+        <Switch>
+          <Route exact path="/">
+            <div style={containerLayout}>        
+              <Button click = {togglePersons} text = {buttonText}/>
+              {(!triggerFetch && showData) && <h1 id="heading"> Loading Persons Data .... </h1>}
+              {renderPerson}
+            </div>
+          </Route>
+
+          <Route exact path="/home">
+            <div style={containerLayout}>        
+              <Button click = {togglePersons} text = {buttonText}/>
+              {(!triggerFetch && showData) && <h1 id="heading"> Loading Persons Data .... </h1>}
+              {renderPerson}
+            </div>
+          </Route>
+
+          <Route exact path="/add-person">
+              <AddPerson />
+          </Route>
+
+          <Route exact path= "/contact-us" >
+            <ContactUs/>
+          </Route>
+
+          <Route exact path= "/goal-details/:id" >
+            <GoalDetails />
+          </Route>
+
+
+        </Switch>
+
+      </Router>
+
+
+
+
+
+
+      {/* <h1 id = "heading"> Task Tracker Application </h1> 
+      <NavBar/>  
+      <div style={containerLayout}>        
+            <Button click = {togglePersons} text = {buttonText}/>
+            {(!triggerFetch && showData) && <h1> Loading Persons Data .... </h1>}
+            {renderPerson}
+      </div> */}
     </div>
   );
 }

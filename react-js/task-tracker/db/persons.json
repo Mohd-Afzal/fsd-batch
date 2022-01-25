@@ -4,35 +4,41 @@
             "id": 1,
             "firstName": "Aman",
             "age": 29,
-            "goal": "Commercial Pilot"
+            "goal": "Commercial Pilot",
+            "goalDetails": "Ever since childhood I wanted to be a Commercial Pilot. In early 20s I started off with my ground training fro the same and cleared the DGCA exams. Now I am lookijg forward to joning a good flying school to attain my CPL."
+
         },
     
         {
             "id": 2,
             "firstName": "Eva Mariam",
             "age": 24,
-            "goal": "Scientist"
+            "goal": "Scientist",
+            "goalDetails": "Ever since childhood I wanted to be a Commercial Pilot. In early 20s I started off with my ground training fro the same and cleared the DGCA exams. Now I am lookijg forward to joning a good flying school to attain my CPL."
         },
     
         {
             "id": 3,
             "firstName": "Afzal",
             "age": 29,
-            "goal": "Director of Innomatics"
+            "goal": "Director of Innomatics",
+            "goalDetails": "Ever since childhood I wanted to be a Commercial Pilot. In early 20s I started off with my ground training fro the same and cleared the DGCA exams. Now I am lookijg forward to joning a good flying school to attain my CPL."
         },
     
         {
             "id": 4,
             "firstName": "Monica",
             "age": 24,
-            "goal": "Software Developer - II"
+            "goal": "Software Developer - II",
+            "goalDetails": "Ever since childhood I wanted to be a Commercial Pilot. In early 20s I started off with my ground training fro the same and cleared the DGCA exams. Now I am lookijg forward to joning a good flying school to attain my CPL."
         },
 
         {
             "id": 5,
             "firstName": "Mayank Bahuguna",
             "age": 34,
-            "goal": "Director of Blue Pappaya"
+            "goal": "Director of Blue Pappaya",
+            "goalDetails": "Ever since childhood I wanted to be a Commercial Pilot. In early 20s I started off with my ground training fro the same and cleared the DGCA exams. Now I am lookijg forward to joning a good flying school to attain my CPL."
         }
     ]
 }
