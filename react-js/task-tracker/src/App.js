@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AddPerson from "./components/AddPerson";
 import ContactUs from "./components/ContactUs";
 import GoalDetails from "./components/GoalDetails";
+import PageNotFound from "./components/PageNotFound";
 
 const containerLayout = {
   display: "flex",
@@ -18,40 +19,6 @@ function App() {
   const [buttonText, setButtonText] = useState("Show Data");
 
   const {data: persons, triggerFetch, setData, setTriggerFetch} = useFetch('http://localhost:8000/persons', showData, [showData]);
-
-  // const fetchData = () => {
-  //   console.log("Use Effect Hook's callback has been invoked!");
-  //   // Fetch the data from a server - JSON Server
-  //   // returns a promise
-  //   setTimeout(() => {
-  //     const resource = "persons";
-  //     fetch(`http://localhost:8000/${resource}`)
-  //     .then((response) => {
-  //       console.log("Fist Promise: ", response);
-  //       if(!response.ok) {
-  //         throw Error(`Unable to reach the mentioned resource -${resource}`);
-  //       }
-  //       return response.json();
-  //     })
-  //     .then((response) => {
-  //       console.log("Second Promise", response);
-  //       setPersons(response);
-  //       setTriggerFetch(true);
-  //       // setShowData(true);
-  //     }).catch((error) => {
-  //       console.log(error.message);
-  //     });
-  //   }, 4000);
-  // }
-
-  // useEffect(() => {
-  //   if (showData) { 
-  //     console.log("Use Effect Triggered on Button Click");
-  //     fetchData();
-  //   } else {
-  //     console.log("UseEffect Called for the first time when Application reloaded!");
-  //   }
-  // }, [showData]);
 
   function togglePersons() {
     if (showData) {
@@ -91,7 +58,6 @@ function App() {
 
   return (
     <div className="App">
-
       <Router>
         <h1 id = "heading"> Task Tracker Application </h1> 
         <NavBar/> 
@@ -125,23 +91,13 @@ function App() {
             <GoalDetails />
           </Route>
 
+          <Route path= "*" >
+            <PageNotFound />
+          </Route>
 
         </Switch>
 
       </Router>
-
-
-
-
-
-
-      {/* <h1 id = "heading"> Task Tracker Application </h1> 
-      <NavBar/>  
-      <div style={containerLayout}>        
-            <Button click = {togglePersons} text = {buttonText}/>
-            {(!triggerFetch && showData) && <h1> Loading Persons Data .... </h1>}
-            {renderPerson}
-      </div> */}
     </div>
   );
 }

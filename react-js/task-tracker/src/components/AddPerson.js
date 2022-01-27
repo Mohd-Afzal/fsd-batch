@@ -1,19 +1,46 @@
 
 import { useState } from 'react';
+import { useHistory } from "react-router-dom";
 
 function AddPerson() {
 
     const [firstName, setFirstName] = useState('');
     const [age, setAge] = useState('');
     const [goal, setGoal] = useState('');
-    const [goalDesc, setGoalDesc] = useState('');
+    const [goalDetails, setGoalDetails] = useState('');
+
+    const [isPending, setIsPending] = useState(true);
+
+    const history = useHistory();
 
 
     const addPerson = (event) => {
+        setIsPending(false);
         event.preventDefault();
         console.log("Add Person was clicked!");
 
-        // I want to make a POST req to the JSON Server!
+        const person = {
+            firstName, 
+            age, 
+            goal, 
+            goalDetails
+        };
+
+        setTimeout(() => {
+            // I want to make a POST req to the JSON Server!
+            fetch("http://localhost:8000/persons", {
+                method: "POST",
+                headers: {
+                    "Content-Type" : "application/json"
+                },
+                body: JSON.stringify(person)
+            }).then((response) => {
+                setIsPending(true);
+                console.log("Person has been Insterted Successfully!");
+                // history.go(-1);
+                history.push("/home");
+            })
+        }, 2000);
     }
 
     return (
@@ -53,17 +80,18 @@ function AddPerson() {
                 </div>
 
                 <div className="form-group form-check">
-                    <label> Goal </label>
+                    <label> Goal Summary </label>
                     <textarea 
                         className="form-control" 
                         cols="30" 
                         rows="10" 
-                        onChange={(event) => setGoalDesc(event.target.value)}
-                        value={goalDesc}
+                        onChange={(event) => setGoalDetails(event.target.value)}
+                        value={goalDetails}
                     />
                 </div>
 
-                <button className="btn btn-primary"> Add Person</button>
+                { isPending && <button className="btn btn-primary"> Add Person </button> }
+                { !isPending && <button className="btn btn-primary"> Adding Person.. </button> }
             </form>
 
         </div>
